@@ -1,0 +1,16 @@
+"editor.tokenColorCustomizations": {
+  "textMateRules": [
+    {
+      "scope": [
+        "entity.name.tag.var.hummod",
+        "source.hummod entity.name.tag.var.hummod",
+        "text.xml entity.name.tag.var.hummod",
+        "meta.tag.var.hummod entity.name.tag.var.hummod"
+      ],
+      "settings": {
+        "foreground": "#FF00FF",  // hot pink for testing
+        "fontStyle": "italic"
+      }
+    }
+  ]
+}

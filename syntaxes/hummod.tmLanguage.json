@@ -1,0 +1,67 @@
+{
+  "scopeName": "source.hummod",
+  "name": "HumMod DES",
+  "patterns": [
+    {
+  "name": "meta.name.block.hummod",
+  "begin": "(<name>)",
+  "beginCaptures": {
+    "1": {
+      "name": "entity.name.tag.name.hummod"
+    }
+  },
+  "end": "(</name>)",
+  "endCaptures": {
+    "1": {
+      "name": "entity.name.tag.name.hummod"
+    }
+  },
+  "patterns": [
+    {
+      "name": "variable.parameter.name-content.hummod",
+      "match": "[^<]+"
+    }
+  ]
+},
+
+    {
+      "name": "entity.name.tag.parm.hummod",
+      "match": "(?<=</?)parm(?=>|\\s)"
+    },
+    {
+      "name": "entity.name.tag.constant.hummod",
+  "match": "(?<=</?)constantvar(?=>|\\s)"
+    },
+        {
+      "name": "entity.name.tag.timervar.hummod",
+  "match": "(?<=</?)timervar(?=>|\\s)"
+    },
+    
+{
+  "name": "entity.name.tag.var.hummod",
+  "match": "(?<=</?)var(?=>|\\s)"
+},
+
+    {
+      "name": "entity.name.tag.definitions.hummod",
+   "match": "(?<=</?)definitions(?=>|\\s)"
+    },
+      {
+      "name": "entity.name.tag.variables.hummod",
+       "match": "(?<=</?)variables(?=>|\\s)"
+    },
+      {
+      "name": "entity.name.tag.equations.hummod",
+      "match": "(?<=</?)equations(?=>|\\s)"
+    },
+    {
+      "name": "entity.name.tag.diffeq.hummod",
+  "match": "(?<=</?)diffeq(?=>|\\s)"
+    },
+
+    {
+      "name": "comment.block.hummod",
+      "match": "<!--.*?-->"
+    }
+  ]
+}
