@@ -3,6 +3,11 @@
   "name": "HumMod DES",
   "patterns": [
     {
+      "name": "text.prologue.hummod",
+      "match": "^[^<\\s][^<]*",
+      "comment": "Matches free-floating text not starting with <"
+    },
+    {
   "name": "meta.name.block.hummod",
   "begin": "(<name>)",
   "beginCaptures": {
@@ -17,48 +22,330 @@
     }
   },
   "patterns": [
+    
     {
       "name": "variable.parameter.name-content.hummod",
       "match": "[^<]+"
     }
   ]
 },
+{
+  "name": "entity.name.tag.infobutton.hummod",
+  "match": "(?<=</?)infobutton(?=>|\\s)"
+},
 
+{
+  "name": "entity.name.tag.title.hummod",
+  "match": "(?<=</?)title(?=>|\\s)"
+},
+{
+  "name": "entity.name.tag.var.hummod",
+  "match": "(?<=</?)var(?=>|\\s)"
+},
     {
       "name": "entity.name.tag.parm.hummod",
       "match": "(?<=</?)parm(?=>|\\s)"
     },
     {
       "name": "entity.name.tag.constant.hummod",
-  "match": "(?<=</?)constantvar(?=>|\\s)"
+  "match": "(?<=</?)constant(?=>|\\s)"
     },
         {
       "name": "entity.name.tag.timervar.hummod",
   "match": "(?<=</?)timervar(?=>|\\s)"
     },
-    
-{
-  "name": "entity.name.tag.var.hummod",
-  "match": "(?<=</?)var(?=>|\\s)"
+         {
+      "name": "entity.name.tag.model.hummod",
+       "match": "(?<=</?)model(?=>|\\s)"
+    },
+        {
+      "name": "entity.name.tag.structure.hummod",
+  "match": "(?<=</?)structure(?=>|\\s)"
+    },
+    {
+  "name": "entity.name.tag.control.hummod",
+  "match": "(?<=</?)control(?=>|\\s)"
 },
+{
+  "name": "entity.name.tag.gofor.hummod",
+  "match": "(?<=</?)gofor(?=>|\\s)"
+},
+{
+  "name": "entity.name.tag.goto.hummod",
+  "match": "(?<=</?)goto(?=>|\\s)"
+},
+    {
+  "name": "entity.name.tag.solutionint.hummod",
+  "match": "(?<=</?)solutionint(?=>|\\s)"
+},
+    {
+  "name": "entity.name.tag.displayint.hummod",
+  "match": "(?<=</?)displayint(?=>|\\s)"
+},
+            {
+      "name": "entity.name.tag.math.hummod",
+  "match": "(?<=</?)math(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.context.hummod",
+  "match": "(?<=</?)context(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.parms.hummod",
+  "match": "(?<=</?)parms(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.dervs.hummod",
+  "match": "(?<=</?)dervs(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.wrapup.hummod",
+  "match": "(?<=</?)wrapup(?=>|\\s)"
+    },
+    
+    
+         {
+      "name": "entity.name.tag.variables.hummod",
+       "match": "(?<=</?)variables(?=>|\\s)"
+    },
 
     {
       "name": "entity.name.tag.definitions.hummod",
    "match": "(?<=</?)definitions(?=>|\\s)"
     },
-      {
-      "name": "entity.name.tag.variables.hummod",
-       "match": "(?<=</?)variables(?=>|\\s)"
+ 
+    {
+      "name": "entity.name.tag.conditional.hummod",
+   "match": "(?<=</?)conditional(?=>|\\s)"
     },
+    
+    {
+      "name": "entity.name.tag.def.hummod",
+   "match": "(?<=</?)def(?=>|\\s)"
+    },
+    
+    {
+      "name": "entity.name.tag.true.hummod",
+   "match": "(?<=</?)true(?=>|\\s)"
+    },
+ 
+    {
+      "name": "entity.name.tag.false.hummod",
+   "match": "(?<=</?)false(?=>|\\s)"
+    },
+ 
+ 
+    {
+      "name": "entity.name.tag.if.hummod",
+   "match": "(?<=</?)if(?=>|\\s)"
+    },
+ 
+    {
+      "name": "entity.name.tag.test.hummod",
+   "match": "(?<=</?)test(?=>|\\s)"
+    },
+ 
+    {
+      "name": "entity.name.tag.integaralname.hummod",
+   "match": "(?<=</?)integralname(?=>|\\s)"
+    },
+ 
+    {
+      "name": "entity.name.tag.dervname.hummod",
+   "match": "(?<=</?)dervname(?=>|\\s)"
+    },
+ 
+    {
+      "name": "entity.name.tag.initialval.hummod",
+   "match": "(?<=</?)initialval(?=>|\\s)"
+    },
+ 
+    {
+      "name": "entity.name.tag.errorlim.hummod",
+   "match": "(?<=</?)errorlim(?=>|\\s)"
+    },
+ 
+ 
       {
       "name": "entity.name.tag.equations.hummod",
       "match": "(?<=</?)equations(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.functions.hummod",
+      "match": "(?<=</?)functions(?=>|\\s)"
     },
     {
       "name": "entity.name.tag.diffeq.hummod",
   "match": "(?<=</?)diffeq(?=>|\\s)"
     },
-
+   {
+      "name": "entity.name.tag.backwardeuler.hummod",
+  "match": "(?<=</?)backwardeuler(?=>|\\s)"
+    },
+      {
+      "name": "entity.name.tag.stablediffeq.hummod",
+  "match": "(?<=</?)stablediffeq(?=>|\\s)"
+    },
+      {
+      "name": "entity.name.tree.hummod",
+      "match": "(?<=</?)tree(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.common.hummod",
+      "match": "(?<=</?)common(?=>|\\s)"
+    },
+        {
+      "name": "entity.name.tag.firstval.hummod",
+      "match": "(?<=</?)firstval(?=>|\\s)"
+    },    {
+      "name": "entity.name.tag.maplist.hummod",
+      "match": "(?<=</?)maplist(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.panel.hummod",
+      "match": "(?<=</?)panel(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.groupbox.hummod",
+      "match": "(?<=</?)groupbox(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.row.hummod",
+      "match": "(?<=</?)row(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.label.hummod",
+      "match": "(?<=</?)label(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.line.hummod",
+      "match": "(?<=</?)line(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.label.hummod",
+      "match": "(?<=</?)label(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.graph.hummod",
+      "match": "(?<=</?)graph(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.val.hummod",
+      "match": "(?<=</?)val(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.col.hummod",
+      "match": "(?<=</?)col(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.slidebar.hummod",
+      "match": "(?<=</?)slidebar(?=>|\\s)"
+    },
+      {
+      "name": "entity.name.tag.format.hummod",
+      "match": "(?<=</?)format(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.list.hummod",
+      "match": "(?<=</?)list(?=>|\\s)"
+    },
+        {
+      "name": "entity.name.tag.repeatlist.hummod",
+      "match": "(?<=</?)repeatlist(?=>|\\s)"
+    },
+          {
+      "name": "entity.name.tag.listname.hummod",
+      "match": "(?<=</?)listname(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.showvalue.hummod",
+      "match": "(?<=</?)showvalue(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.repeat.hummod",
+      "match": "(?<=</?)repeat(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.reps.hummod",
+      "match": "(?<=</?)reps(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.stepsize.hummod",
+      "match": "(?<=</?)stepsize(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.showclock.hummod",
+      "match": "(?<=</?)showclock(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.map.hummod",
+      "match": "(?<=</?)map(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.showpanelname.hummod",
+      "match": "(?<=</?)showpanelname(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.img.hummod",
+      "match": "(?<=</?)img(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.showgraph.hummod",
+      "match": "(?<=</?)showgraph(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.high.hummod",
+      "match": "(?<=</?)high(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.wide.hummod",
+      "match": "(?<=</?)wide(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.xaxis.hummod",
+      "match": "(?<=</?)xaxis(?=>|\\s)"
+    },
+                {
+      "name": "entity.name.tag.xvar.hummod",
+      "match": "(?<=</?)xvar(?=>|\\s)"
+    },
+                {
+      "name": "entity.name.tag.yvar.hummod",
+      "match": "(?<=</?)yvar(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.yaxis.hummod",
+      "match": "(?<=</?)yaxis(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.scale.hummod",
+      "match": "(?<=</?)scale(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.leftmargin.hummod",
+      "match": "(?<=</?)leftmargin(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.min.hummod",
+      "match": "(?<=</?)min(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.max.hummod",
+      "match": "(?<=</?)max(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.inc.hummod",
+      "match": "(?<=</?)inc(?=>|\\s)"
+    },
+              {
+      "name": "entity.name.tag.linecolor.hummod",
+      "match": "(?<=</?)linecolor(?=>|\\s)"
+    },
+                 {
+      "name": "entity.name.tag.block.hummod",
+      "match": "(?<=</?)block(?=>|\\s)"
+    },
+    
     {
       "name": "comment.block.hummod",
       "match": "<!--.*?-->"
