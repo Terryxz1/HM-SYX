@@ -3,11 +3,123 @@
   "name": "HumMod DES",
   "patterns": [
     {
-      "name": "text.prologue.hummod",
-      "match": "^[^<\\s][^<]*",
-      "comment": "Matches free-floating text not starting with <"
+  "comment": "============================= Global Naming ============================="
+},
+    {
+      "name": "meta.globalvar.hummod",
+      "match": "([a-zA-Z0-9_\\-]+)(\\.)(\\[[^\\]]+\\]|[a-zA-Z0-9_\\-]+)",
+      "captures": {
+        "1": { "name": "variable.structurename.hummod" },
+        "2": { "name": "punctuation.separator.dot.hummod" },
+        "3": { "name": "variable.elementname.hummod" }
+      }
+    },
+    
+{
+  "comment": "============================= Unmarked Text ============================="
+},
+
+{
+  "name": "text.prologue.hummod",
+  "match": "^\\s*[^<\\s][^<]*",
+  "comment": "Matches free-floating text, even with leading whitespace, but skips lines starting with <"
+},
+ {
+  "comment": "============================= If, Ifnot and Create Processing Commands ============================="
+},
+{
+  "name": "meta.instruction.create.hummod",
+  "match": "<\\?create\\s+[^?>]+\\?>"
+},
+{
+  "name": "meta.instruction.if.hummod",
+  "match": "<\\?if\\s+[^?>]+\\?>"
+},
+{
+  "name": "meta.instruction.ifnot.hummod",
+  "match": "<\\?ifnot\\s+[^?>]+\\?>"
+},
+{
+  "comment": "====================== Include Processing Command Filepath ======================="
+},
+{
+  "name": "meta.instruction.include.hummod",
+  "begin": "<\\?include\\s+",
+  "beginCaptures": {
+    "0": {
+      "name": "keyword.directive.include.hummod"
+    }
+  },
+  "end": "\\?>",
+  "patterns": [
+    {
+      "name": "string.path.include.hummod",
+      "match": "[^\\s?>]+"
+    }
+  ]
+},
+{
+  "comment": "======================= Path Processing Command Filepath ======================="
+},
+{
+  "name": "meta.instruction.path.hummod",
+  "begin": "<\\?path\\s+",
+  "beginCaptures": {
+    "0": {
+      "name": "keyword.directive.path.hummod"
+    }
+  },
+  "end": "\\?>",
+  "patterns": [
+    {
+      "name": "string.path.path.hummod",
+      "match": "[^\\s?>]+"
+    }
+  ]
+},
+{
+  "comment": "============================= Text within <val> ============================="
+},
+{
+  "name": "meta.val.block.hummod",
+  "begin": "(<val>)",
+  "beginCaptures": {
+    "1": {
+      "name": "entity.name.tag.val.hummod"
+    }
+  },
+  "end": "(</val>)",
+  "endCaptures": {
+    "1": {
+      "name": "entity.name.tag.val.hummod"
+    }
+  },
+  "patterns": [
+    {
+      "name": "meta.globalvar.hummod",
+      "match": "([a-zA-Z0-9_\\-]+)(\\.)(\\[[^\\]]+\\]|[a-zA-Z0-9_\\-]+)",
+      "captures": {
+        "1": { "name": "variable.structurename.hummod" },
+        "2": { "name": "punctuation.separator.dot.hummod" },
+        "3": { "name": "variable.elementname.hummod" }
+      }
     },
     {
+      "name": "constant.numeric.val-content.hummod",
+      "match": "[^<>()\\s]+"
+    },
+    {
+      "name": "punctuation.parens.hummod",
+      "match": "[()]",
+      "comment": "Matches opening and closing parentheses"
+    }
+  ]
+},
+
+ {
+  "comment": "============================= <Tags> ============================="
+},
+{
   "name": "meta.name.block.hummod",
   "begin": "(<name>)",
   "beginCaptures": {
@@ -22,47 +134,83 @@
     }
   },
   "patterns": [
-    
+    {
+      "name": "meta.globalvar.hummod",
+      "match": "([a-zA-Z0-9_\\-]+)(\\.)(\\[[^\\]]+\\]|[a-zA-Z0-9_\\-]+)",
+      "captures": {
+        "1": { "name": "variable.structurename.hummod" },
+        "2": { "name": "punctuation.separator.dot.hummod" },
+        "3": { "name": "variable.elementname.hummod" }
+      }
+    },
     {
       "name": "variable.parameter.name-content.hummod",
-      "match": "[^<]+"
+      "match": "[^<.]+",
+      "comment": "Matches individual names, but skips dot to avoid matching global vars"
     }
+
   ]
 },
+
 {
   "name": "entity.name.tag.infobutton.hummod",
   "match": "(?<=</?)infobutton(?=>|\\s)"
 },
-
 {
   "name": "entity.name.tag.title.hummod",
   "match": "(?<=</?)title(?=>|\\s)"
 },
+
 {
   "name": "entity.name.tag.var.hummod",
   "match": "(?<=</?)var(?=>|\\s)"
 },
-    {
+{
       "name": "entity.name.tag.parm.hummod",
       "match": "(?<=</?)parm(?=>|\\s)"
-    },
-    {
+},
+{
       "name": "entity.name.tag.constant.hummod",
   "match": "(?<=</?)constant(?=>|\\s)"
-    },
-        {
+},
+{
+      "name": "entity.name.tag.fixedparm.hummod",
+  "match": "(?<=</?)fixedparm(?=>|\\s)"
+},
+{
+      "name": "entity.name.tag.fixedvar.hummod",
+  "match": "(?<=</?)fixedvar(?=>|\\s)"
+},
+{
+      "name": "entity.name.tag.whitenoise.hummod",
+  "match": "(?<=</?)whitenoise(?=>|\\s)"
+},
+{
+      "name": "entity.name.tag.normaldist.hummod",
+  "match": "(?<=</?)normaldist(?=>|\\s)"
+},
+{
       "name": "entity.name.tag.timervar.hummod",
   "match": "(?<=</?)timervar(?=>|\\s)"
-    },
-         {
+},
+{
       "name": "entity.name.tag.model.hummod",
        "match": "(?<=</?)model(?=>|\\s)"
-    },
-        {
+},
+{
+      "name": "entity.name.tag.context.hummod",
+  "match": "(?<=</?)context(?=>|\\s)"
+},
+{
+      "name": "entity.name.tag.math.hummod",
+  "match": "(?<=</?)math(?=>|\\s)"
+},
+
+{
       "name": "entity.name.tag.structure.hummod",
   "match": "(?<=</?)structure(?=>|\\s)"
-    },
-    {
+},
+{
   "name": "entity.name.tag.control.hummod",
   "match": "(?<=</?)control(?=>|\\s)"
 },
@@ -74,87 +222,110 @@
   "name": "entity.name.tag.goto.hummod",
   "match": "(?<=</?)goto(?=>|\\s)"
 },
-    {
+{
+      "name": "entity.name.tag.display.hummod",
+       "match": "(?<=</?)display(?=>|\\s)"
+},
+{
+      "name": "entity.name.tag.displayfirst.hummod",
+       "match": "(?<=</?)displayfirst(?=>|\\s)"
+},
+{
   "name": "entity.name.tag.solutionint.hummod",
   "match": "(?<=</?)solutionint(?=>|\\s)"
 },
-    {
+{
   "name": "entity.name.tag.displayint.hummod",
   "match": "(?<=</?)displayint(?=>|\\s)"
 },
-            {
-      "name": "entity.name.tag.math.hummod",
-  "match": "(?<=</?)math(?=>|\\s)"
-    },
-            {
-      "name": "entity.name.tag.context.hummod",
-  "match": "(?<=</?)context(?=>|\\s)"
-    },
-            {
+{
       "name": "entity.name.tag.parms.hummod",
   "match": "(?<=</?)parms(?=>|\\s)"
-    },
-            {
+},
+{
       "name": "entity.name.tag.dervs.hummod",
   "match": "(?<=</?)dervs(?=>|\\s)"
-    },
-            {
+},
+{
       "name": "entity.name.tag.wrapup.hummod",
   "match": "(?<=</?)wrapup(?=>|\\s)"
-    },
-    
-    
-         {
+},   
+{
       "name": "entity.name.tag.variables.hummod",
        "match": "(?<=</?)variables(?=>|\\s)"
-    },
-
-    {
+},
+{
       "name": "entity.name.tag.definitions.hummod",
    "match": "(?<=</?)definitions(?=>|\\s)"
-    },
- 
-    {
+},
+{
       "name": "entity.name.tag.conditional.hummod",
    "match": "(?<=</?)conditional(?=>|\\s)"
-    },
-    
-    {
+},
+{
       "name": "entity.name.tag.def.hummod",
    "match": "(?<=</?)def(?=>|\\s)"
     },
-    
-    {
+        {
       "name": "entity.name.tag.true.hummod",
    "match": "(?<=</?)true(?=>|\\s)"
     },
- 
-    {
+     {
       "name": "entity.name.tag.false.hummod",
    "match": "(?<=</?)false(?=>|\\s)"
     },
- 
- 
-    {
-      "name": "entity.name.tag.if.hummod",
-   "match": "(?<=</?)if(?=>|\\s)"
-    },
- 
-    {
-      "name": "entity.name.tag.test.hummod",
-   "match": "(?<=</?)test(?=>|\\s)"
-    },
- 
-    {
-      "name": "entity.name.tag.integaralname.hummod",
-   "match": "(?<=</?)integralname(?=>|\\s)"
-    },
- 
-    {
+     {
       "name": "entity.name.tag.dervname.hummod",
    "match": "(?<=</?)dervname(?=>|\\s)"
     },
- 
+    {
+      "name": "entity.name.tag.copy.hummod",
+   "match": "(?<=</?)copy(?=>|\\s)"
+    },
+     {
+      "name": "entity.name.tag.from.hummod",
+   "match": "(?<=</?)from(?=>|\\s)"
+    },
+     {
+      "name": "entity.name.tag.to.hummod",
+   "match": "(?<=</?)to(?=>|\\s)"
+    },
+     {
+      "name": "entity.name.tag.if.hummod",
+   "match": "(?<=</?)if(?=>|\\s)"
+    },
+     {
+      "name": "entity.name.tag.test.hummod",
+   "match": "(?<=</?)test(?=>|\\s)"
+    },
+       {
+      "name": "entity.name.tag.testcase.hummod",
+   "match": "(?<=</?)testcase(?=>|\\s)"
+    },
+       {
+      "name": "entity.name.tag.case.hummod",
+   "match": "(?<=</?)case(?=>|\\s)"
+    },
+     {
+      "name": "entity.name.tag.integaralname.hummod",
+   "match": "(?<=</?)integralname(?=>|\\s)"
+    },
+     {
+      "name": "entity.name.tag.dervname.hummod",
+   "match": "(?<=</?)dervname(?=>|\\s)"
+    },
+     {
+      "name": "entity.name.tag.dxmaxname.hummod",
+   "match": "(?<=</?)dxmaxname(?=>|\\s)"
+    },
+      {
+      "name": "entity.name.tag.onjustchanged.hummod",
+   "match": "(?<=</?)onjustchanged(?=>|\\s)"
+    },
+         {
+      "name": "entity.name.tag.timer.hummod",
+   "match": "(?<=</?)timer(?=>|\\s)"
+    },
     {
       "name": "entity.name.tag.initialval.hummod",
    "match": "(?<=</?)initialval(?=>|\\s)"
@@ -164,15 +335,98 @@
       "name": "entity.name.tag.errorlim.hummod",
    "match": "(?<=</?)errorlim(?=>|\\s)"
     },
- 
- 
+           {
+      "name": "entity.name.tag.call.hummod",
+      "match": "(?<=</?)call(?=>|\\s)"
+    }, 
+           {
+      "name": "entity.name.tag.delay.hummod",
+   "match": "(?<=</?)delay(?=>|\\s)"
+    },
+           {
+      "name": "entity.name.tag.lag.hummod",
+   "match": "(?<=</?)lag(?=>|\\s)"
+    },
+       {
+      "name": "entity.name.tag.impliciteq.hummod",
+   "match": "(?<=</?)impliciteq(?=>|\\s)"
+    },
+     {
+      "name": "entity.name.tag.stabledelay.hummod",
+   "match": "(?<=</?)stabledelay(?=>|\\s)"
+    },
+     {
+      "name": "entity.name.tag.rateconstname.hummod",
+   "match": "(?<=</?)rateconstname(?=>|\\s)"
+    },
+       {
+      "name": "entity.name.tag.startname.hummod",
+   "match": "(?<=</?)startname(?=>|\\s)"
+    },
+           {
+      "name": "entity.name.tag.outputname.hummod",
+   "match": "(?<=</?)outputname(?=>|\\s)"
+    },
+           {
+      "name": "entity.name.tag.inputname.hummod",
+   "match": "(?<=</?)inputname(?=>|\\s)"
+    },
+       {
+      "name": "entity.name.tag.endname.hummod",
+   "match": "(?<=</?)endname(?=>|\\s)"
+    },
       {
       "name": "entity.name.tag.equations.hummod",
       "match": "(?<=</?)equations(?=>|\\s)"
     },
+       {
+      "name": "entity.name.tag.searchmin.hummod",
+   "match": "(?<=</?)searchmin(?=>|\\s)"
+    },
+           {
+      "name": "entity.name.tag.implicitmath.hummod",
+   "match": "(?<=</?)implicitmath(?=>|\\s)"
+    },
           {
       "name": "entity.name.tag.functions.hummod",
       "match": "(?<=</?)functions(?=>|\\s)"
+    },
+            {
+      "name": "entity.name.tag.showcurve.hummod",
+      "match": "(?<=</?)showcurve(?=>|\\s)"
+    },
+              {
+      "name": "entity.name.tag.curve.hummod",
+      "match": "(?<=</?)curve(?=>|\\s)"
+    },
+           {
+      "name": "entity.name.tag.x.hummod",
+      "match": "(?<=</?)x(?=>|\\s)"
+    },
+           {
+      "name": "entity.name.tag.y.hummod",
+      "match": "(?<=</?)y(?=>|\\s)"
+    },
+         {
+      "name": "entity.name.tag.point.hummod",
+      "match": "(?<=</?)point(?=>|\\s)"
+    },
+    
+            {
+      "name": "entity.name.tag.curvename.hummod",
+      "match": "(?<=</?)curvename(?=>|\\s)"
+    },
+              {
+      "name": "entity.name.tag.point.hummod",
+      "match": "(?<=</?)point(?=>|\\s)"
+    },
+              {
+      "name": "entity.name.tag.slope.hummod",
+      "match": "(?<=</?)slope(?=>|\\s)"
+    },
+                  {
+      "name": "entity.name.tag.calclag.hummod",
+      "match": "(?<=</?)calclag(?=>|\\s)"
     },
     {
       "name": "entity.name.tag.diffeq.hummod",
@@ -187,7 +441,7 @@
   "match": "(?<=</?)stablediffeq(?=>|\\s)"
     },
       {
-      "name": "entity.name.tree.hummod",
+      "name": "entity.name.tag.tree.hummod",
       "match": "(?<=</?)tree(?=>|\\s)"
     },
           {
@@ -205,6 +459,10 @@
       "name": "entity.name.tag.panel.hummod",
       "match": "(?<=</?)panel(?=>|\\s)"
     },
+              {
+      "name": "entity.name.tag.structurename.hummod",
+      "match": "(?<=</?)structurename(?=>|\\s)"
+    },
           {
       "name": "entity.name.tag.groupbox.hummod",
       "match": "(?<=</?)groupbox(?=>|\\s)"
@@ -217,6 +475,14 @@
       "name": "entity.name.tag.label.hummod",
       "match": "(?<=</?)label(?=>|\\s)"
     },
+              {
+      "name": "entity.name.tag.blockname.hummod",
+      "match": "(?<=</?)blockname(?=>|\\s)"
+    },
+              {
+      "name": "entity.name.tag.actionbutton.hummod",
+      "match": "(?<=</?)actionbutton(?=>|\\s)"
+    },
           {
       "name": "entity.name.tag.line.hummod",
       "match": "(?<=</?)line(?=>|\\s)"
@@ -228,6 +494,14 @@
           {
       "name": "entity.name.tag.graph.hummod",
       "match": "(?<=</?)graph(?=>|\\s)"
+    },
+              {
+      "name": "entity.name.tag.showbargraph.hummod",
+      "match": "(?<=</?)showbargraph(?=>|\\s)"
+    },
+                  {
+      "name": "entity.name.tag.bar.hummod",
+      "match": "(?<=</?)bar(?=>|\\s)"
     },
           {
       "name": "entity.name.tag.val.hummod",
@@ -244,6 +518,10 @@
       {
       "name": "entity.name.tag.format.hummod",
       "match": "(?<=</?)format(?=>|\\s)"
+    },
+              {
+      "name": "entity.name.tag.fieldwidth.hummod",
+      "match": "(?<=</?)fieldwidth(?=>|\\s)"
     },
           {
       "name": "entity.name.tag.list.hummod",
@@ -269,13 +547,29 @@
       "name": "entity.name.tag.reps.hummod",
       "match": "(?<=</?)reps(?=>|\\s)"
     },
-            {
+        {
+      "name": "entity.name.tag.storageint.hummod",
+   "match": "(?<=</?)storageint(?=>|\\s)"
+    },
+     {
+      "name": "entity.name.tag.menuitem.hummod",
+   "match": "(?<=</?)menuitem(?=>|\\s)"
+    },
+     {
+      "name": "entity.name.tag.settlingtime.hummod",
+   "match": "(?<=</?)settlingtime(?=>|\\s)"
+    },
+             {
       "name": "entity.name.tag.stepsize.hummod",
       "match": "(?<=</?)stepsize(?=>|\\s)"
     },
             {
       "name": "entity.name.tag.showclock.hummod",
       "match": "(?<=</?)showclock(?=>|\\s)"
+    },
+     {
+      "name": "entity.name.tag.decimal.hummod",
+   "match": "(?<=</?)decimal(?=>|\\s)"
     },
             {
       "name": "entity.name.tag.map.hummod",
@@ -337,15 +631,86 @@
       "name": "entity.name.tag.inc.hummod",
       "match": "(?<=</?)inc(?=>|\\s)"
     },
+                  {
+      "name": "entity.name.tag.color.hummod",
+      "match": "(?<=</?)color(?=>|\\s)"
+    },
+    
               {
       "name": "entity.name.tag.linecolor.hummod",
       "match": "(?<=</?)linecolor(?=>|\\s)"
     },
-                 {
-      "name": "entity.name.tag.block.hummod",
-      "match": "(?<=</?)block(?=>|\\s)"
+                  {
+      "name": "entity.name.tag.text.hummod",
+      "match": "(?<=</?)text(?=>|\\s)"
+    },
+                  {
+      "name": "entity.name.tag.showbitmap.hummod",
+      "match": "(?<=</?)showbitmap(?=>|\\s)"
+    },
+                  {
+      "name": "entity.name.tag.symbol.hummod",
+      "match": "(?<=</?)symbol(?=>|\\s)"
+    },
+                  {
+      "name": "entity.name.tag.style.hummod",
+      "match": "(?<=</?)style(?=>|\\s)"
+    },
+                  {
+      "name": "entity.name.tag.size.hummod",
+      "match": "(?<=</?)size(?=>|\\s)"
+    },
+                  {
+      "name": "entity.name.tag.linewidth.hummod",
+      "match": "(?<=</?)linewidth(?=>|\\s)"
+    },
+                   {
+      "name": "entity.name.tag.radiobuttons.hummod",
+      "match": "(?<=</?)radiobuttons(?=>|\\s)"
     },
     
+    
+                {
+      "name": "entity.name.tag.block.hummod",
+      "match": "(?<=</?)block(?=>|\\s)"
+    },    
+
+{
+  "name": "entity.name.tag.beep.hummod",
+  "match": "(?<=<)beep(?=\\s*/?>)"
+},
+     {
+      "name": "entity.name.tag.exitblock.hummod",
+   "match": "(?<=<)exitblock(?=\\s*/?>)"
+    },
+{
+  "name": "entity.name.tag.infobutton.hummod",
+  "match": "(?<=<)infobutton(?=\\s*/?>)"
+},
+{
+  "name": "entity.name.tag.scramble.hummod",
+  "match": "(?<=<)scramble(?=\\s*/?>)"
+},
+{
+  "name": "entity.name.tag.gobar.hummod",
+  "match": "(?<=<)gobar(?=\\s*/?>)"
+},
+{
+  "name": "entity.name.tag.addarrowsnewline.hummod",
+  "match": "(?<=<)addarrowsnewline(?=\\s*/?>)"
+},
+        {
+      "name": "entity.name.tag.secs.hummod",
+   "match": "(?<=<)secs(?=\\s*/?>)"
+    },
+     {
+      "name": "entity.name.tag.ampm.hummod",
+   "match": "(?<=<)ampm(?=\\s*/?>)"
+    },
+     {
+      "name": "entity.name.tag.days.hummod",
+   "match": "(?<=<)days(?=\\s*/?>)"
+    },
     {
       "name": "comment.block.hummod",
       "match": "<!--.*?-->"

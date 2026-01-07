@@ -3,6 +3,12 @@
   "displayName": "HumMod-Syntax",
   "description": "Syntax highlighting for Coleman's HumMod Schema found in .DES files",
   "version": "0.0.1",
+"author": "Taras (Terry) Yavorskyy, University of Toronto Scarborough Computational Physiology Group",
+  "icon": "IconCPG.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Terryxz1/hummod-syntax.git"
+  },
   "engines": {
     "vscode": "^1.107.0"
   },
