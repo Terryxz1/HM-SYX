@@ -1,6 +1,6 @@
-# hummod-syntax README
+HM-SYntaX README
 This is an extension used to define custom scopes for Tom Coleman's HumMod Schema.
 
-Pilot version 1. 
+Updated version wtih AI assistance. VSIX available on request. 
 
 By Taras (Terry) Yavorskyy
